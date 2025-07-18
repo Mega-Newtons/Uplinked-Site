@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Team | Uplinked</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fdfdfd;
+      color: #4a4a4a;
+      text-align: center;
+      padding: 2rem;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    .background-circle {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.15;
+      animation: pulse 8s ease-in-out infinite;
+      z-index: 0;
+    }
+
+    .circle1 { width: 200px; height: 200px; background-color: #fcd34d; top: 5%; left: 10%; }
+    .circle2 { width: 150px; height: 150px; background-color: #ef4444; bottom: 10%; right: 10%; }
+    .circle3 { width: 120px; height: 120px; background-color: #1e3a8a; top: 30%; right: 20%; }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+    }
+
+    .menu-button {
+      position: absolute; top: 1rem; left: 1rem;
+      background-color: #173a56; border: 2px solid white; color: white;
+      font-size: 1.5rem; padding: 0.5rem 0.75rem; border-radius: 12px;
+      cursor: pointer; z-index: 1001;
+    }
+
+    .sidebar {
+      position: fixed; top: 0; left: -260px; width: 260px; height: 100vh;
+      background-color: #173a56; padding: 2rem 1rem;
+      display: flex; flex-direction: column; gap: 1rem;
+      transition: all 0.3s ease; z-index: 1000;
+    }
+    .sidebar.open { left: 0; }
+    .sidebar .brand { font-size: 1.5rem; font-weight: bold; color: white; }
+    .sidebar .tagline { font-size: 0.9rem; color: #fcd34d; }
+    .sidebar a { color: #cbd5e0; text-decoration: none; padding: 0.75rem;
+      border-radius: 12px; transition: background 0.3s; }
+    .sidebar a:hover { background-color: #2b4f6c; color: white; }
+
+    h1.brand {
+      font-size: 3rem; font-weight: 800; color: #173a56;
+      margin: 1rem 0 0.25rem; z-index: 1; position: relative;
+    }
+    h1.brand span { color: #ef4444; }
+    .underline {
+      width: 60px; height: 4px; background-color: #fcd34d;
+      margin: 0.5rem auto 1.5rem; border-radius: 2px;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+      margin: 2rem auto 0 auto;
+      max-width: 1000px;
+      padding: 1rem;
+      box-sizing: border-box;
+      position: relative;
+      z-index: 1;
+    }
+
+    .team-card {
+      width: 100%; box-sizing: border-box; perspective: 1000px;
+      min-height: 280px; position: relative; display: block;
+    }
+    .team-card-inner {
+      position: relative; width: 100%; height: 100%;
+      transform-style: preserve-3d; transition: transform 0.8s;
+    }
+    .team-card:hover .team-card-inner { transform: rotateY(180deg); }
+
+    .team-card-front,
+    .team-card-back {
+      position: absolute; top: 0; left: 0;
+      width: 100%; height: 100%;
+      backface-visibility: hidden;
+      background-color: white; border: 1px solid #e5e7eb;
+      border-radius: 12px; padding: 1.5rem;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+      box-sizing: border-box;
+      display: flex; flex-direction: column; justify-content: center;
+      text-align: center;
+    }
+    .team-card-back { transform: rotateY(180deg); color: #4b5563; font-size: 0.95rem; }
+
+    .avatar {
+      width: 80px; height: 80px; border-radius: 50%;
+      background-color: #d1d5db; margin: 0 auto 1rem;
+    }
+    .team-card h3 {
+      margin: 0.5rem 0 0.25rem; font-size: 1.25rem;
+      color: #173a56;
+    }
+    .team-card p { margin: 0; font-size: 0.95rem; color: #4b5563; }
+    .team-card-back a { color: #1e3a8a; text-decoration: underline; word-break: break-all; }
+  </style>
+</head>
+<body>
+  <div class="background-circle circle1"></div>
+  <div class="background-circle circle2"></div>
+  <div class="background-circle circle3"></div>
+
+  <button class="menu-button" onclick="toggleSidebar()">☰</button>
+  <div class="sidebar" id="sidebar">
+    <div class="brand">Uplinked</div>
+    <div class="tagline">Elevating Your Brand</div>
+    <a href="Uplinked.html">Home</a>
+    <a href="About.html">About</a>
+    <a href="Mission.html">Mission</a>
+    <a href="Team.html">Team</a>
+    <a href="Events.html">Events</a>
+    <a href="Services.html">Services</a>
+  </div>
+
+  <h1 class="brand">Our <span>Team</span></h1>
+  <div class="underline"></div>
+
+  <div class="team-grid">
+    <div class="team-card">
+      <div class="team-card-inner">
+        <div class="team-card-front">
+          <div class="avatar"></div>
+          <h3>Alyssa Liu</h3>
+          <p>Outreach & Social Media Coordinator</p>
+        </div>
+        <div class="team-card-back">
+          Leads client research, builds partnerships, and manages our social channels.<br>
+          <a href="mailto:1077643@lammersvilleusd.net">1077643@lammersvilleusd.net</a>
+        </div>
+      </div>
+    </div>
+    <div class="team-card">
+      <div class="team-card-inner">
+        <div class="team-card-front">
+          <div class="avatar"></div>
+          <h3>Denis Biju</h3>
+          <p>Machine Learning & Development Lead<br>& Consulting Specialist</p>
+        </div>
+        <div class="team-card-back">
+          Oversees ML initiatives, coordinates projects, and contributes to general programming.<br>
+          <a href="mailto:1077892@lammersvilleusd.net">1077892@lammersvilleusd.net</a>
+        </div>
+      </div>
+    </div>
+    <div class="team-card">
+      <div class="team-card-inner">
+        <div class="team-card-front">
+          <div class="avatar"></div>
+          <h3>Abhinav Jarajapu</h3>
+          <p>Machine Learning Engineer<br>& Consulting Specialist</p>
+        </div>
+        <div class="team-card-back">
+          Designs and implements ML models and supports backend development.<br>
+          <a href="mailto:epicgamer43798@gmail.com">epicgamer43798@gmail.com</a>
+        </div>
+      </div>
+    </div>
+    <div class="team-card">
+      <div class="team-card-inner">
+        <div class="team-card-front">
+          <div class="avatar"></div>
+          <h3>Alexandra Popusoi</h3>
+          <p>Fundraising & Community Engagement<br>& Consulting Specialist Manager</p>
+        </div>
+        <div class="team-card-back">
+          Drives fundraising campaigns, manages funds, and amplifies our social presence.<br>
+          <a href="mailto:1070811@lammersvilleusd.net">1070811@lammersvilleusd.net</a>
+        </div>
+      </div>
+    </div>
+    <div class="team-card">
+      <div class="team-card-inner">
+        <div class="team-card-front">
+          <div class="avatar"></div>
+          <h3>Siddharth Kundurthi</h3>
+          <p>Machine Learning Specialist</p>
+        </div>
+        <div class="team-card-back">
+          Develops ML solutions and contributes to core programming tasks.<br>
+          <a href="mailto:sidkundurthi@gmail.com">sidkundurthi@gmail.com</a>
+        </div>
+      </div>
+    </div>
+    <div class="team-card">
+      <div class="team-card-inner">
+        <div class="team-card-front">
+          <div class="avatar"></div>
+          <h3>Shresta Bollu</h3>
+          <p>Software Engineer & Outreach Specialist</p>
+        </div>
+        <div class="team-card-back">
+          Builds our platforms and helps expand our network through targeted outreach.<br>
+          <a href="mailto:1069780@lammersvilleusd.net">1069780@lammersvilleusd.net</a>
+        </div>
+      </div>
+    </div>
+    <div class="team-card">
+      <div class="team-card-inner">
+        <div class="team-card-front">
+          <div class="avatar"></div>
+          <h3>Anish Vadapalli</h3>
+          <p>Partnerships & Outreach Coordinator</p>
+        </div>
+        <div class="team-card-back">
+          Cultivates organizational partnerships and steers outreach efforts.<br>
+          <a href="mailto:1074614@lammersvilleusd.net">1074614@lammersvilleusd.net</a>
+        </div>
+      </div>
+    </div>
+    <div class="team-card">
+      <div class="team-card-inner">
+        <div class="team-card-front">
+          <div class="avatar"></div>
+          <h3>Anvi Sharma</h3>
+          <p>Member Engagement & Outreach Associate</p>
+        </div>
+        <div class="team-card-back">
+          Fosters member involvement and supports our broader outreach strategy.<br>
+          <a href="mailto:anvidots@gmail.com">anvidots@gmail.com</a>
+        </div>
+      </div>
+    </div>
+    <div class="team-card">
+      <div class="team-card-inner">
+        <div class="team-card-front">
+          <div class="avatar"></div>
+          <h3>Neel Sisodiya</h3>
+          <p>Outreach & Coordination<br>& Consulting Specialist</p>
+        </div>
+        <div class="team-card-back">
+          Supports coordination efforts and offers consulting expertise across projects.<br>
+          <a href="mailto:neel.sisodiya.mh@gmail.com">neel.sisodiya.mh@gmail.com</a>
+        </div>
+      </div>
+    </div>
+    <div class="team-card">
+      <div class="team-card-inner">
+        <div class="team-card-front">
+          <div class="avatar"></div>
+          <h3>Aditya Nori</h3>
+          <p>General Programming & Outreach</p>
+        </div>
+        <div class="team-card-back">
+          Contributes to general coding tasks and assists in outreach activities across teams.<br>
+          <a href="mailto:1077892@lammersvilleusd.net">1077892@lammersvilleusd.net</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleSidebar() {
+      document.getElementById("sidebar").classList.toggle("open");
+    }

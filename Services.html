@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Services | Uplinked</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fdfdfd;
+      color: #4a4a4a;
+      text-align: center;
+      padding: 2rem;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    .background-circle {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.15;
+      animation: pulse 8s ease-in-out infinite;
+      z-index: 0;
+    }
+    .circle1 { width: 200px; height: 200px; background-color: #fcd34d; top: 5%; left: 10%; }
+    .circle2 { width: 150px; height: 150px; background-color: #ef4444; bottom: 10%; right: 10%; }
+    .circle3 { width: 120px; height: 120px; background-color: #1e3a8a; top: 30%; right: 20%; }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+    }
+
+    .menu-button {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background-color: #173a56;
+      border: 2px solid white;
+      color: white;
+      font-size: 1.5rem;
+      padding: 0.5rem 0.75rem;
+      border-radius: 12px;
+      cursor: pointer;
+      z-index: 1001;
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -260px;
+      width: 260px;
+      height: 100vh;
+      background-color: #173a56;
+      padding: 2rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      transition: all 0.3s ease;
+      z-index: 1000;
+    }
+    .sidebar.open { left: 0; }
+    .sidebar .brand { font-size: 1.5rem; font-weight: bold; color: white; margin-bottom: 0.25rem; }
+    .sidebar .tagline { font-size: 0.9rem; color: #fcd34d; margin-bottom: 2rem; }
+    .sidebar a { color: #cbd5e0; text-decoration: none; padding: 0.75rem 1rem; border-radius: 12px; display: block; transition: background 0.3s; }
+    .sidebar a:hover { background-color: #2b4f6c; color: white; }
+
+    h1.brand {
+      font-size: 3rem;
+      font-weight: 800;
+      color: #173a56;
+      margin: 1rem 0 0.25rem;
+      position: relative;
+      z-index: 1;
+    }
+    h1.brand span { color: #ef4444; }
+    .underline {
+      width: 60px;
+      height: 4px;
+      background-color: #fcd34d;
+      margin: 0.5rem auto 1.5rem;
+      border-radius: 2px;
+    }
+
+    .services-section {
+      max-width: 750px;
+      margin: 2.5rem auto 0 auto;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      padding: 2.5rem 2rem 2.5rem 2rem;
+      position: relative;
+      z-index: 1;
+      text-align: left;
+    }
+    .services-section h2 {
+      color: #173a56;
+      margin-bottom: 1.5rem;
+      font-size: 2rem;
+      text-align: center;
+    }
+    .service-block {
+      margin-bottom: 2.2rem;
+    }
+    .service-block h3 {
+      font-size: 1.25rem;
+      color: #1e3a8a;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .service-block ul {
+      margin: 0 0 0 1.5rem;
+      padding: 0;
+      color: #4b5563;
+      font-size: 1.08rem;
+    }
+    .service-block ul li {
+      margin-bottom: 0.5rem;
+      line-height: 1.6;
+    }
+    .why-section {
+      margin-top: 2.5rem;
+      background: #f9fafb;
+      border-radius: 10px;
+      padding: 1.5rem 1.5rem 1.5rem 2rem;
+    }
+    .why-section h3 {
+      color: #173a56;
+      font-size: 1.15rem;
+      margin-bottom: 0.7rem;
+      font-weight: 700;
+    }
+    .why-section ul {
+      margin: 0 0 0 1.5rem;
+      padding: 0;
+      color: #4b5563;
+      font-size: 1.08rem;
+    }
+    .why-section ul li {
+      margin-bottom: 0.5rem;
+      line-height: 1.6;
+    }
+    .cta-button {
+      display: inline-block;
+      margin-top: 2rem;
+      background-color: #1e3a8a;
+      color: white;
+      padding: 0.75rem 2rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+    .cta-button:hover {
+      background-color: #2c489f;
+      transform: translateY(-2px);
+    }
+    @media (max-width: 600px) {
+      .services-section { padding: 1.2rem 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="background-circle circle1"></div>
+  <div class="background-circle circle2"></div>
+  <div class="background-circle circle3"></div>
+
+  <button class="menu-button" onclick="toggleSidebar()">☰</button>
+  <div class="sidebar" id="sidebar">
+    <div class="brand">Uplinked</div>
+    <div class="tagline">Elevating Your Brand</div>
+    <a href="Uplinked.html">Home</a>
+    <a href="About.html">About</a>
+    <a href="Mission.html">Mission</a>
+    <a href="Team.html">Team</a>
+    <a href="Events.html">Events</a>
+    <a href="Services.html">Services</a>
+  </div>
+
+  <h1 class="brand">Up<span>linked</span></h1>
+  <div class="underline"></div>
+
+  <div class="services-section">
+    <h2>Services We Offer</h2>
+
+    <div class="service-block">
+      <h3>🤖 AI Chatbots</h3>
+      <ul>
+        <li><b>Instant Customer Support:</b> Deploy intelligent chatbots on your website or messaging platforms to answer 80% of routine inquiries in real‑time, freeing up your team for high‑value tasks.</li>
+        <li><b>Lead Qualification:</b> Automatically gather visitor information, qualify leads, and seamlessly hand them off to your sales team—boosting conversion rates by up to 67%.</li>
+        <li><b>Custom Personality:</b> Brand your chatbot’s tone and responses to reflect your company voice, creating a consistent and memorable customer experience.</li>
+      </ul>
+    </div>
+
+    <div class="service-block">
+      <h3>☎️ AI Calling Agents</h3>
+      <ul>
+        <li><b>Voice-Enabled Outreach:</b> Implement AI-driven calling agents that handle 5–10× more calls than a human representative at a fraction of the cost.</li>
+        <li><b>Automated Follow‑Ups:</b> Ensure no lead slips through the cracks—our voice AI can schedule appointments, deliver reminders, and increase booking rates by up to 50%.</li>
+        <li><b>24/7 Availability:</b> Offer round‑the‑clock customer engagement and support, scaling your outreach without adding headcount.</li>
+      </ul>
+    </div>
+
+    <div class="service-block">
+      <h3>🌐 Websites & E‑Commerce</h3>
+      <ul>
+        <li><b>Custom Web Design:</b> Build responsive, SEO‑optimized websites that tell your brand’s story and drive tangible results.</li>
+        <li><b>E‑Store Integration:</b> Launch secure, easy‑to‑manage online stores complete with payment gateways, inventory management, and order tracking.</li>
+        <li><b>Performance Focus:</b> Fast load times and clean code ensure your site not only looks great but also ranks well on Google.</li>
+      </ul>
+    </div>
+
+    <div class="service-block">
+      <h3>📋 Digital Menus & Online Ordering</h3>
+      <ul>
+        <li><b>Interactive Menus:</b> Present your offerings with stunning visuals, detailed descriptions, and upsell prompts that increase average order value by up to 20%.</li>
+        <li><b>Seamless Ordering:</b> Integrate a user‑friendly online ordering system that reduces staff workload by as much as 30% and boosts customer satisfaction.</li>
+        <li><b>Mobile Optimization:</b> Ensure your menu adapts flawlessly to any device, capturing 97% of diners who research before they dine.</li>
+      </ul>
+    </div>
+
+    <div class="why-section">
+      <h3>🔧 Why Choose Uplinked?</h3>
+      <ul>
+        <li><b>End‑to‑End Solutions:</b> From initial strategy and design through development and ongoing support, we handle every aspect of your digital transformation.</li>
+        <li><b>Data‑Driven Results:</b> We use analytics and A/B testing to optimize every touchpoint, ensuring your investment delivers measurable ROI.</li>
+        <li><b>Community‑First Approach:</b> As a nonprofit, our mission is to close the digital divide—so your success is our success.</li>
+      </ul>
+    </div>
+
+    <a href="https://forms.gle/PWYDuvE4wM8nw2Fo8" class="cta-button">Get Started With Uplinked →</a>
+  </div>
+
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.classList.toggle('open');
+    }
+
+    // Close sidebar when clicking outside
+    document.addEventListener('click', function(event) {
+      const sidebar = document.getElementById('sidebar');
+      const menuButton = document.querySelector('.menu-button');
+      if (
+        sidebar.classList.contains('open') &&
+        !sidebar.contains(event.target) &&
+        !menuButton.contains(event.target)
+      ) {
+        sidebar.classList.remove('open');
+      }
+    });
+
+    // Close sidebar on Escape key
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        const sidebar = document.getElementById('sidebar');
+        if (sidebar.classList.contains('open')) {
+          sidebar.classList.remove('open');
+        }
+      }
+    });
+  </script>
+</body>

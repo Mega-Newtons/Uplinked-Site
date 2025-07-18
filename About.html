@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About | Uplinked</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fdfdfd;
+      color: #4a4a4a;
+      text-align: center;
+      padding: 2rem;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    .background-circle {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.15;
+      animation: pulse 8s ease-in-out infinite;
+      z-index: 0;
+    }
+
+    .circle1 {
+      width: 200px;
+      height: 200px;
+      background-color: #fcd34d;
+      top: 5%;
+      left: 10%;
+    }
+
+    .circle2 {
+      width: 150px;
+      height: 150px;
+      background-color: #ef4444;
+      bottom: 10%;
+      right: 10%;
+    }
+
+    .circle3 {
+      width: 120px;
+      height: 120px;
+      background-color: #1e3a8a;
+      top: 30%;
+      right: 20%;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.15);
+      }
+    }
+
+    .menu-button {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background-color: #173a56;
+      border: 2px solid white;
+      color: white;
+      font-size: 1.5rem;
+      padding: 0.5rem 0.75rem;
+      border-radius: 12px;
+      cursor: pointer;
+      z-index: 1001;
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -260px;
+      width: 260px;
+      height: 100vh;
+      background-color: #173a56;
+      padding: 2rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      transition: all 0.3s ease;
+      z-index: 1000;
+    }
+
+    .sidebar.open {
+      left: 0;
+    }
+
+    .sidebar .brand {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 0.25rem;
+      color: white;
+    }
+
+    .sidebar .tagline {
+      font-size: 0.9rem;
+      color: #fcd34d;
+      margin-bottom: 2rem;
+    }
+
+    .sidebar a {
+      color: #cbd5e0;
+      text-decoration: none;
+      padding: 0.75rem 1rem;
+      border-radius: 12px;
+      display: block;
+      transition: background 0.3s;
+    }
+
+    .sidebar a:hover {
+      background-color: #2b4f6c;
+      color: white;
+    }
+
+    h1.brand {
+      font-size: 3rem;
+      font-weight: 800;
+      color: #173a56;
+      margin: 1rem 0 0.25rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    h1.brand span {
+      color: #ef4444;
+    }
+
+    .underline {
+      width: 60px;
+      height: 4px;
+      background-color: #fcd34d;
+      margin: 0.5rem auto 1.5rem;
+      border-radius: 2px;
+    }
+
+    .about-section {
+      max-width: 700px;
+      margin: 1.5rem auto;
+      text-align: left;
+      color: #4b5563;
+    }
+    .about-section h2 {
+      color: #173a56;
+      margin-top: 2rem;
+    }
+    .about-section h3 {
+      color: #173a56;
+      margin-top: 1.5rem;
+      font-weight: 700;
+    }
+
+    .about-section ol {
+      padding-left: 1.5rem;
+    }
+
+    .about-section ol li {
+      margin-bottom: 0.5rem;
+      line-height: 1.6;
+    }
+
+    .cta-button {
+      display: inline-block;
+      margin-top: 2rem;
+      background-color: #1e3a8a;
+      color: white;
+      padding: 0.75rem 2rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .cta-button:hover {
+      background-color: #2c489f;
+      transform: translateY(-2px);
+    }
+
+    .counter {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #1e3a8a;
+      margin-right: 0.5rem;
+    }
+    .benefit-block {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      padding: 1rem;
+      margin: 1rem 0;
+    }
+    .source {
+      font-style: italic;
+      font-size: 0.9rem;
+    }
+    .source span {
+      font-weight: bold;
+    }
+    .source .google { color: #4285F4; }
+    .source .verisign { color: #008272; }
+    .source .stanford { color: #8c1515; }
+    .source .seo { color: #111827; }
+    .source .hospitalitynet { color: #0067b1; }
+    .source .upmenu { color: #f15a24; }
+    .source .ibm { color: #054ada; }
+    .source .intercom { color: #0061ff; }
+    .source .salesforce { color: #00A1E0; }
+    .source .juniper { color: #00739d; }
+    .source .conversica { color: #00a78e; }
+  </style>
+</head>
+<body>
+  <div class="background-circle circle1"></div>
+  <div class="background-circle circle2"></div>
+  <div class="background-circle circle3"></div>
+
+  <button class="menu-button" onclick="toggleSidebar()">☰</button>
+
+  <div class="sidebar" id="sidebar">
+    <div class="brand">Uplinked</div>
+    <div class="tagline">Elevating Your Brand</div>
+    <a href="Uplinked.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="mission.html">Mission</a>
+    <a href="team.html">Team</a>
+    <a href="events.html">Events</a>
+    <a href="services.html">Services</a>
+  </div>
+
+  <h1 class="brand">Up<span>linked</span></h1>
+  <div class="underline"></div>
+
+  <div class="about-section">
+    <h2>Our Origin</h2>
+    <p>Founded by a team of passionate technologists and community advocates, Uplinked began as a grassroots initiative to close the digital divide. We saw too many businesses struggling to adapt to rapidly changing technologies, and we knew we had the tools and drive to help.</p>
+
+    <h2>Our Approach</h2>
+    <p>We take a collaborative, client-first approach. We listen to the unique needs of each business and then design tailored solutions that deliver real, measurable impact.</p>
+    <ol>
+      <li><strong>Step 1:</strong> Understand each business’s goals and challenges</li>
+      <li><strong>Step 2:</strong> Design tailored digital solutions that fit their needs</li>
+      <li><strong>Step 3:</strong> Deploy tools and train the business owners</li>
+      <li><strong>Step 4:</strong> Monitor outcomes and iterate for improvement</li>
+    </ol>
+
+    <h2>Benefits</h2>
+    <div class="benefit-block">
+      <p><span class="counter" data-target="84">0</span>% believe businesses with a website are more credible. <span class="source"><span class="verisign">(Verisign)</span></span></p>
+    </div>
+    <div class="benefit-block">
+      <p><span class="counter" data-target="75">0</span>% judge a business’s credibility by its website design. <span class="source"><span class="stanford">(Stanford)</span></span></p>
+    </div>
+    <div class="benefit-block">
+      <p><span class="counter" data-target="2">0</span>x faster growth and <span class="counter" data-target="50">0</span>% more likely to increase revenue. <span class="source"><span class="google">(Google)</span></span></p>
+    </div>
+
+    <!-- New stats start here -->
+    <div class="benefit-block">
+      <p><span class="counter" data-target="97">0</span>% of people learn more about a local business online than anywhere else. <span class="source"><span class="seo">(SEO Tribunal)</span></span></p>
+    </div>
+    <div class="benefit-block">
+      <p>Having a mobile-optimized website increases engagement by over <span class="counter" data-target="60">0</span>%. </p>
+    </div>
+
+    <h3>📋 Online Menus (Restaurants / Retail / Services)</h3>
+    <div class="benefit-block">
+      <p><span class="counter" data-target="77">0</span>% of diners check a restaurant’s website before deciding to visit. <span class="source"><span class="hospitalitynet">(HospitalityNet)</span></span></p>
+    </div>
+    <div class="benefit-block">
+      <p>A digital menu can increase average order value by up to <span class="counter" data-target="20">0</span>%. <span class="source"><span class="upmenu">(UpMenu)</span></span></p>
+    </div>
+    <div class="benefit-block">
+      <p>Online ordering systems reduce staff workload by up to <span class="counter" data-target="30">0</span>%, allowing businesses to serve more customers with less strain.</p>
+    </div>
+    <div class="benefit-block">
+      <p>Restaurants with digital ordering systems see ordering frequency rise by <span class="counter" data-target="33">0</span>%. <span class="source">(Restaurant Business Online)</span></p>
+    </div>
+
+    <h3>🤖 AI Chatbots</h3>
+    <div class="benefit-block">
+      <p>AI chatbots can answer <span class="counter" data-target="80">0</span>% of routine customer questions instantly. <span class="source"><span class="ibm">(IBM)</span></span></p>
+    </div>
+    <div class="benefit-block">
+      <p>Chatbots reduce customer service costs by up to <span class="counter" data-target="30">0</span>%. <span class="source">(Chatbots Magazine)</span></p>
+    </div>
+    <div class="benefit-block">
+      <p><span class="counter" data-target="69">0</span>% of consumers prefer chatbots for quick communication with brands. <span class="source"><span class="salesforce">(Salesforce)</span></span></p>
+    </div>
+    <div class="benefit-block">
+      <p>The average chatbot response time is under 1 second, boosting satisfaction and retention.</p>
+    </div>
+    <div class="benefit-block">
+      <p>Businesses using chatbots see a <span class="counter" data-target="67">0</span>% increase in qualified leads. <span class="source"><span class="intercom">(Intercom)</span></span></p>
+    </div>
+
+    <h3>☎️ AI Calling Agents (Voice AI / IVR AI Assistants)</h3>
+    <div class="benefit-block">
+      <p>AI agents can handle 5-10x more calls than a human rep at 1/10th the cost.</p>
+    </div>
+    <div class="benefit-block">
+      <p>Businesses using voice AI save an average of $8 per call. <span class="source"><span class="juniper">(Juniper Research)</span></span></p>
+    </div>
+    <div class="benefit-block">
+      <p>AI voice agents can increase follow-up rate by <span class="counter" data-target="60">0</span>% and ensure 24/7 outreach, which boosts close rates.</p>
+    </div>
+    <div class="benefit-block">
+      <p>Some AI calling solutions boost appointment bookings by 30–50%. <span class="source"><span class="conversica">(Conversica)</span></span></p>
+    </div>
+    <div class="benefit-block">
+      <p>Voice agents allow small businesses to scale outreach to thousands of leads or customers without needing more staff.</p>
+    </div>
+
+    <!-- End new stats -->
+
+    <h2>Want to get started?</h2>
+    <p>Fill out the form below or call at <b>925-337-9538</b></p>
+    <a href="https://forms.gle/PWYDuvE4wM8nw2Fo8" class="cta-button">Elevate Your Business Now →</a>
+  </div>
+
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.classList.toggle('open');
+    }
+
+    // Animated counter script
+    const counters = document.querySelectorAll('.counter');
+    counters.forEach(counter => {
+      const updateCount = () => {
+        const target = +counter.getAttribute('data-target');
+        const count = +counter.innerText;
+        const increment = target / 60;
+
+        if(count < target) {
+          counter.innerText = Math.ceil(count + increment);
+          setTimeout(updateCount, 30);
+        } else {
+          counter.innerText = target;
+        }
+      }
+      updateCount();
+    });
+  </script>
+</body>
+</html>

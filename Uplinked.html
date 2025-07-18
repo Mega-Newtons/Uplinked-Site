@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Uplinked | Elevating Your Brand</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fdfdfd;
+      color: #4a4a4a;
+      text-align: center;
+      padding: 2rem;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    .background-circle {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.15;
+      animation: pulse 8s ease-in-out infinite;
+      z-index: 0;
+    }
+
+    .circle1 {
+      width: 200px;
+      height: 200px;
+      background-color: #fcd34d;
+      top: 5%;
+      left: 10%;
+    }
+
+    .circle2 {
+      width: 150px;
+      height: 150px;
+      background-color: #ef4444;
+      bottom: 10%;
+      right: 10%;
+    }
+
+    .circle3 {
+      width: 120px;
+      height: 120px;
+      background-color: #1e3a8a;
+      top: 30%;
+      right: 20%;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.15);
+      }
+    }
+
+    .menu-button {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background-color: #173a56;
+      border: 2px solid white;
+      color: white;
+      font-size: 1.5rem;
+      padding: 0.5rem 0.75rem;
+      border-radius: 12px;
+      cursor: pointer;
+      z-index: 1001;
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -260px;
+      width: 260px;
+      height: 100vh;
+      background-color: #173a56;
+      padding: 2rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      transition: all 0.3s ease;
+      z-index: 1000;
+    }
+
+    .sidebar.open {
+      left: 0;
+    }
+
+    .sidebar .brand {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 0.25rem;
+      color: white;
+    }
+
+    .sidebar .tagline {
+      font-size: 0.9rem;
+      color: #fcd34d;
+      margin-bottom: 2rem;
+    }
+
+    .sidebar a {
+      color: #cbd5e0;
+      text-decoration: none;
+      padding: 0.75rem 1rem;
+      border-radius: 12px;
+      display: block;
+      transition: background 0.3s;
+    }
+
+    .sidebar a:hover {
+      background-color: #2b4f6c;
+      color: white;
+    }
+
+    h2.tagline {
+      font-size: 1rem;
+      color: #6b7280;
+      margin-top: 3rem;
+    }
+
+    h1.brand {
+      font-size: 3rem;
+      font-weight: 800;
+      color: #173a56;
+      margin: 1rem 0 0.25rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    h1.brand span {
+      color: #ef4444;
+    }
+
+    .underline {
+      width: 60px;
+      height: 4px;
+      background-color: #fcd34d;
+      margin: 0.5rem auto 1.5rem;
+      border-radius: 2px;
+    }
+
+    .description {
+      max-width: 700px;
+      font-size: 1.1rem;
+      color: #4b5563;
+      margin: 2rem auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .buttons a {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      border-radius: 10px;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .buttons a:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-red {
+      background-color: #ef4444;
+      color: white;
+    }
+    .btn-red:hover {
+      background-color: #dc2626;
+    }
+
+    .btn-yellow {
+      background-color: #fcd34d;
+      color: #111827;
+    }
+    .btn-yellow:hover {
+      background-color: #fbbf24;
+    }
+
+    .btn-blue {
+      background-color: #1e3a8a;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 10px;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      display: inline-block;
+    }
+    .btn-blue:hover {
+      background-color: #1e40af;
+    }
+
+    .rotating-subtitle {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #173a56;
+      font-family: 'Segoe UI', sans-serif;
+      margin-top: 1rem;
+      min-height: 2.5rem;
+      transition: opacity 0.5s ease;
+      position: relative;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+  <div class="background-circle circle1"></div>
+  <div class="background-circle circle2"></div>
+  <div class="background-circle circle3"></div>
+
+  <button class="menu-button" onclick="toggleSidebar()">☰</button>
+
+  <div class="sidebar" id="sidebar">
+    <div class="brand">Uplinked</div>
+    <div class="tagline">Elevating Your Brand</div>
+    <a href="Uplinked.html">Home</a>
+    <a href="About.html">About</a>
+    <a href="Mission.html">Mission</a>
+    <a href="Team.html">Team</a>
+    <a href="#">Events</a>
+    <a href="#">Services</a>
+  </div>
+
+  <h2 class="tagline">Elevating Your Brand to Monumental Heights</h2>
+  <h1 class="brand">Up<span>linked</span></h1>
+  <div class="underline"></div>
+  <p class="description">
+    We are a passionate nonprofit organization dedicated to transforming brands and elevating them to unprecedented heights.
+    Through innovative strategies, community partnerships, and unwavering commitment to excellence, we help organizations
+    achieve their maximum potential while making a positive impact in the world.
+  </p>
+  <div class="buttons">
+    <a href="#" class="btn-red">Contact Us ↗</a>
+    <a href="#" class="btn-yellow">Partnership ↗</a>
+    <a href="#" class="btn-blue">Explore Our Services →</a>
+  </div>
+
+  <div class="rotating-subtitle" id="rotating-subtitle">🧪 Innovative solutions that work</div>
+
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.classList.toggle('open');
+    }
+
+    const messages = [
+      "🧪 Innovative solutions that work",
+      "⚡ Transforming businesses",
+      "❤️ Passionate about your success"
+    ];
+
+    let index = 0;
+    const subtitle = document.getElementById("rotating-subtitle");
+
+    setInterval(() => {
+      subtitle.style.opacity = 0;
+      setTimeout(() => {
+        index = (index + 1) % messages.length;
+        subtitle.textContent = messages[index];
+        subtitle.style.opacity = 1;
+      }, 500);
+    }, 4000);
+  </script>
+</body>
+</html>
